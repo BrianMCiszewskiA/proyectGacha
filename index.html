@@ -9,6 +9,24 @@
 			.visible{
 				visibility: visible;
 			}
+			#gacha{
+				text-align: center;
+			}
+			#collectionButton{
+				position: absolute;
+				top: 0;
+				right: 0;
+				margin: 1px;
+			}
+			#myCollection{
+				text-align: center;
+			}
+			body{
+				margin: 0px;
+			}
+            header{
+                margin: 20px;
+    		}
 		</style>
 		<script type="text/javascript" src="gachaSystem.js"></script>
 		<script type="text/javascript" src="BungoLikeSystem.js"></script>
@@ -17,6 +35,9 @@
 
 	</head>
 	<body>
+		<header>
+			<button id="collectionButton" onclick="showCollection()">My Collection</button>
+		</header>
 		<section id="gacha">
 			<div id="gachaButtons">
 				<button id="1Throw" onclick="showThrow()">1 Throw</button>
@@ -24,6 +45,9 @@
 			</div>
 			<div id="gachaResult">
 			</div>
+		</section>
+		<section id="collection">
+			<div id="myCollection"></div>
 		</section>
 	</body>
 </html>

@@ -1,8 +1,8 @@
 //seteo del system
 const cardCollection = [];
-addSSRCard(new Card("dazai", "dazai", "dazai"));
-addSRCard(new Card("atsushi", "atsushi", "atsushi"));
-addRCard(new Card("odasaku", "odasaku", "odasaku"));
+addSSRCard(new Card("dazai", "dazai.png", "dazai"));
+addSRCard(new Card("atsushi", "atsushi.png", "atsushi"));
+addRCard(new Card("odasaku", "odasaku.png", "odasaku"));
 //--------------------------------
 function showThrow(){
 	card = oneThrow();
@@ -19,6 +19,16 @@ function showElevenThrow(){
 	}
 	acceptResultButton();
 	hideThrowButtons();
+}
+function showCollection(){//tal vez eventualmente hacerla colapsable, o ponerlo en otra pestaña tipo "mi perfil"
+	emptyScreen("myCollection");
+	where = document.getElementById("myCollection");
+	for(i=0; i<cardCollection.length; i++){
+		card = cardCollection[i];
+		image = createImage(card.image, card.nameId, card.name);
+		where.appendChild(image);
+	}
+	closeCollectionButton();
 }
 //---------------------------------------
 
@@ -39,8 +49,15 @@ function acceptResultButton(){
 	where.appendChild(button);
 }
 
+
+function closeCollectionButton(){
+	where = document.getElementById("myCollection");
+	button = createButton("Close", "emptyScreen('myCollection')");
+	where.appendChild(button);
+}
+
 function emptyResultScreen(){
-	document.getElementById("gachaResult").innerHTML = "";
+	emptyScreen("gachaResult");
 	showThrowButtons();
 }
 
@@ -72,4 +89,7 @@ function createButton(text, action) {
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
+}
+function emptyScreen(id){
+	document.getElementById(id).innerHTML = "";
 }
